@@ -29,7 +29,7 @@ void yaz(char *p, int n){
     fgets(p, n + 1 , stdin);
 }
 
-//buyu harfe cevirir hafleri
+//buyuk harfe cevirir
 void buyut(char *p, int n){
     while (*p != '\0'){
         *p = toupper(*p);
