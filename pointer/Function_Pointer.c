@@ -1,47 +1,87 @@
-//HESAP MAKİNESİ
 #include <stdio.h>
 #include <stdlib.h>
 
-int carp(int a, int b);
-int topla(int a, int b);
-int coz(int a, int b, int (*deneme)(int, int)); //Function Pointer
+void sayilariGir(int b, int dizi[b]);
+void ikiCarp(int b, int dizi[b]);
+void karesiniAl(int b, int dizi[b]);
+void negatif(int b, int dizi[b]);
+void islem(int b,int dizi[b], void (*kiyasla)(int, int[]));
 
 int main(){
     int a;
-    int b;
-    printf("1. sayiyi giriniz\n");
+    printf("kac elemanli olucagini giriniz\n");
     scanf("%d", &a);
-    printf("2. sayiyi giriniz\n");
-    scanf("%d", &b);
-    int secim;
-    printf("toplama yapmak icin 1 carpma yapmak icin 2 yi tuslayiniz\n");
-    scanf("%d", &secim);
+    int dizi[a];
 
-    if (secim == 1){
-        int t = coz(a, b, topla);
-        printf("toplami = %d\n", t);
-    }
-    else if(secim == 2){
-        int c = coz(a, b, carp);
-        printf("carpim = %d\n", c);
-    }
-    else{
-        printf("gecersiz islem girdiniz\n");
-    }
+    sayilariGir(a, dizi);
+    int secenek;
+    do{
+        printf("1- tum elemanlari 2 ile carpin\n");
+        printf("2- tum elemanlarin karesini alin\n");
+        printf("3- elemanlari negatif yap\n");
+        printf("4- cikis\n");
+        printf("yapicaginiz islemi seciniz\n");
+
+        scanf("%d", &secenek);
+
+        switch (secenek){
+        case 1:
+            printf("\n\n");
+            islem(a, dizi, ikiCarp);
+            break;
+        case 2:
+            printf("\n\n");
+            islem(a, dizi, karesiniAl);
+            break;
+        case 3:
+            printf("\n\n");
+            islem(a, dizi, negatif);
+            break;
+        case 4:
+            printf("\n\n");
+            printf("cikis yapiliyor\n");
+        default:
+            break;
+        }
+
+        printf("\n\n\n");
+    }while (secenek != 5);
+    
+        
 
     system("pause");
     return 0;
 }
 
-int carp(int a , int b){
-    return a* b;
+void sayilariGir(int b,int dizi[b]){
+    printf("sayilari giriniz\n");
+
+    for (int i = 0; i < b; i++){
+        printf("%d. sayi = ", i + 1);
+        scanf("%d", &dizi[i]);
+        printf("\n");
+    }
 }
 
-int topla(int a, int b){
-    return a + b;
+void islem(int b,int dizi[b], void (*kiyasla)(int, int[])){
+    kiyasla(b, dizi);
 }
 
-int coz(int a, int b, int (*deneme)(int, int)){
-    return deneme(a, b);
+void ikiCarp(int b, int dizi[b]){
+    for (int i = 0; i < b; i++){
+        printf("%d. sayinin 2 kati = %d\n", i + 1, dizi[i] * 2);
+    }
 }
 
+void karesiniAl(int b, int dizi[b]){
+    for (int i = 0; i < b; i++){
+        printf("%d. sayinin karesi = %d\n", i + 1, dizi[i] * dizi[i]);
+    } 
+}
+
+
+void negatif(int b, int dizi[b]){
+    for (int i = 0; i < b; i++){
+        printf("%d. sayinin negatifi = %d\n", i + 1, -1 * dizi[i]);
+    }
+}
