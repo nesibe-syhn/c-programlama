@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void menu(int b, int dizi[]);
 void sayilariGir(int b, int dizi[]);
 void ikiCarp(int b, int dizi[]);
 void karesiniAl(int b, int dizi[]);
@@ -14,6 +15,14 @@ int main(){
     int dizi[a];
 
     sayilariGir(a, dizi);
+
+    menu(a, dizi);
+
+    system("pause");
+    return 0;
+}
+
+void menu(int b, int dizi[]){
     int secenek;
     do{
         printf("1- tum elemanlari 2 ile carpin\n");
@@ -27,30 +36,25 @@ int main(){
         switch (secenek){
         case 1:
             printf("\n\n");
-            islem(a, dizi, ikiCarp);
+            islem(b, dizi, ikiCarp);
             break;
         case 2:
             printf("\n\n");
-            islem(a, dizi, karesiniAl);
+            islem(b, dizi, karesiniAl);
             break;
         case 3:
             printf("\n\n");
-            islem(a, dizi, negatif);
+            islem(b, dizi, negatif);
             break;
         case 4:
             printf("\n\n");
             printf("cikis yapiliyor\n");
+            break;
         default:
+            printf("gecersiz secim\n");
             break;
         }
-
-        printf("\n\n\n");
     }while (secenek != 4);
-    
-        
-
-    system("pause");
-    return 0;
 }
 
 void sayilariGir(int b,int dizi[]){
