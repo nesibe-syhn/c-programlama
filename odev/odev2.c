@@ -7,7 +7,7 @@ void esitle(int orjinal[], int dizi[], int boyut);
 void randomNumber(int dizi[], int boyut);
 void yazdir(int dizi[], int boyut);
 void kontrol(int *p, int *boyut);
-void bubbleshort(int dizi[], int boyut);
+
 void birlesim(int diziA[], int diziB[], int boyutA, int boyutB);
 void kesisim(int diziA[], int diziB[], int boyutA, int boyutB);
 void fark(int birinci[], int ikinci[], int boyutA, int boyutB);
